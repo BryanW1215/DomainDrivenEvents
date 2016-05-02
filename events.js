@@ -110,7 +110,7 @@ window.Events =
 
         var runScript = function (script, clear) {
             Normalize();
-            Emit();
+            return Emit();
             // End
 
             function Normalize() {
