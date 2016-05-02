@@ -83,16 +83,14 @@ window.Events =
 
                 self.EventReceived = function (event, data) {
                     var Promises = [];
-
+                    var fListeners = _.map(_.filter(self.Listeners, {'event': event}), 'f'); //Filtering to event then pulling the listener function property
+                    _.each(fListeners, CallListener);
+                    return Promises;
+                    // End
                     function CallListener(f) {
                         var ret = f(data);
                         ret && ret.then && Promises.push(ret);
                     }
-
-                    var fListeners = _.map(_.filter(self.Listeners, {'event': event}), 'f'); //Filtering to event then pulling the listener function property
-                    _.each(fListeners, CallListener);
-                    return Promises;
-
                 };
 
 
@@ -132,7 +130,7 @@ window.Events =
                     clear && e.emit('Clear');
                     _.each(script[k], function (c) {
                         var ret = e.emit(c.event, c.value);
-                        Promises.push(ret);
+                        Promises = Promises.concat(ret);
                     });
                 });
                 return Promise.all(Promises)
