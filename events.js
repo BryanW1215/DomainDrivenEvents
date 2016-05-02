@@ -32,14 +32,15 @@ window.Events =
                 self.emit = function (event, data) {
                     var Promises = [];
                     _.each(self.InstanceCollection, instanceEmit);
-                    //end
-                    function instanceEmit(i) {
-                        Promises = Promises.concat(i.onEmit(event, data));
-                    }
                     if (Promises.length) { return Promise.all(Promises); }
                     return new Promise(function (resolve) {
                         resolve();
                     });
+                    //end
+
+                    function instanceEmit(i) {
+                        Promises = Promises.concat(i.onEmit(event, data));
+                    }
                 };
                 self.attach = function (instance) {
                     self.InstanceCollection.push(instance);
