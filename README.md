@@ -1,7 +1,7 @@
 # Promise Enabled Domain Driven Event Library with Angular module
 
 ### Description
-Created for cross controller communication in a large scale angular SPA.
+Created for cross controller communication in a large scale angular SPA.  Requires bluebird and lodash.
 <br/><br/>
 
 #### $event API
