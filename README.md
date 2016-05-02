@@ -13,7 +13,7 @@ Created for cross controller communication in a large scale angular SPA.
 <br/><br/>
   
   
-####  Emitter Instance Api
+####  Emitter Instance API
 ###### emitter.on(event, function)
 Attaches a function to a domain event.  May return a promise for asynchronous events.
 
